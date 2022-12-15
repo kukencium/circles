@@ -14,6 +14,7 @@ class MyWidget(QMainWindow):
         self.X = range(30, 730)
         self.Y = range(30, 670)
         self.R = range(10, 250)
+        self.col = range(256)
 
         self.pushButton.clicked.connect(self.run)
 
@@ -25,10 +26,10 @@ class MyWidget(QMainWindow):
             qp.begin(self)
             pen = QPen()
             pen.setWidth(3)
-            pen.setColor(QColor(255, 255, 0))
-            qp.setPen(pen)
 
             for i in range(random.choice(range(3, 15))):
+                pen.setColor(QColor(random.choice(self.col), random.choice(self.col), random.choice(self.col)))
+                qp.setPen(pen)
                 r = random.choice(self.R)
                 qp.drawEllipse(random.choice(self.X), random.choice(self.Y), r, r)
 
